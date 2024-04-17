@@ -6,7 +6,7 @@
         public string? PromoDescripcion { get; set; }
         public DateTime FechaPromocion { get; set; }
 
-        public int BurguerID { get; set; }
+        public int BurgerId { get; set; }
         public Burger? Burger { get; set; }
     }
 }

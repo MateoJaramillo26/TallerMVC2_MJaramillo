@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TallerMVC2_MJ.Data;
 
@@ -11,9 +12,11 @@ using TallerMVC2_MJ.Data;
 namespace TallerMVC2_MJ.Migrations
 {
     [DbContext(typeof(TallerMVC2_MJContext))]
-    partial class TallerMVC2_MJContextModelSnapshot : ModelSnapshot
+    [Migration("20240417171837_Inicio1Bdd")]
+    partial class Inicio1Bdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

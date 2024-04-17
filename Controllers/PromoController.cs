@@ -22,7 +22,8 @@ namespace TallerMVC2_MJ.Controllers
         // GET: Promo
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Promo.ToListAsync());
+            var tallerMVC2_MJContext = _context.Promo.Include(p => p.Burger);
+            return View(await tallerMVC2_MJContext.ToListAsync());
         }
 
         // GET: Promo/Details/5
@@ -34,6 +35,7 @@ namespace TallerMVC2_MJ.Controllers
             }
 
             var promo = await _context.Promo
+                .Include(p => p.Burger)
                 .FirstOrDefaultAsync(m => m.PromoId == id);
             if (promo == null)
             {
@@ -46,6 +48,7 @@ namespace TallerMVC2_MJ.Controllers
         // GET: Promo/Create
         public IActionResult Create()
         {
+            ViewData["BurgerId"] = new SelectList(_context.Burger, "BurgerId", "Name");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace TallerMVC2_MJ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PromoId,PromoDescripcion,FechaPromocion,BurguerID")] Promo promo)
+        public async Task<IActionResult> Create([Bind("PromoId,PromoDescripcion,FechaPromocion,BurgerId")] Promo promo)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace TallerMVC2_MJ.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BurgerId"] = new SelectList(_context.Burger, "BurgerId", "Name", promo.BurgerId);
             return View(promo);
         }
 
@@ -78,6 +82,7 @@ namespace TallerMVC2_MJ.Controllers
             {
                 return NotFound();
             }
+            ViewData["BurgerId"] = new SelectList(_context.Burger, "BurgerId", "Name", promo.BurgerId);
             return View(promo);
         }
 
@@ -86,7 +91,7 @@ namespace TallerMVC2_MJ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PromoId,PromoDescripcion,FechaPromocion,BurguerID")] Promo promo)
+        public async Task<IActionResult> Edit(int id, [Bind("PromoId,PromoDescripcion,FechaPromocion,BurgerId")] Promo promo)
         {
             if (id != promo.PromoId)
             {
@@ -113,6 +118,7 @@ namespace TallerMVC2_MJ.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["BurgerId"] = new SelectList(_context.Burger, "BurgerId", "Name", promo.BurgerId);
             return View(promo);
         }
 
@@ -125,6 +131,7 @@ namespace TallerMVC2_MJ.Controllers
             }
 
             var promo = await _context.Promo
+                .Include(p => p.Burger)
                 .FirstOrDefaultAsync(m => m.PromoId == id);
             if (promo == null)
             {

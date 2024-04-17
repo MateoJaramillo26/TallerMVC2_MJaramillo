@@ -10,22 +10,22 @@ using TallerMVC2_MJ.Models;
 
 namespace TallerMVC2_MJ.Controllers
 {
-    public class PromoesController : Controller
+    public class PromoController : Controller
     {
         private readonly TallerMVC2_MJContext _context;
 
-        public PromoesController(TallerMVC2_MJContext context)
+        public PromoController(TallerMVC2_MJContext context)
         {
             _context = context;
         }
 
-        // GET: Promoes
+        // GET: Promo
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Promo_1.ToListAsync());
+            return View(await _context.Promo.ToListAsync());
         }
 
-        // GET: Promoes/Details/5
+        // GET: Promo/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,7 +33,7 @@ namespace TallerMVC2_MJ.Controllers
                 return NotFound();
             }
 
-            var promo = await _context.Promo_1
+            var promo = await _context.Promo
                 .FirstOrDefaultAsync(m => m.PromoId == id);
             if (promo == null)
             {
@@ -43,13 +43,13 @@ namespace TallerMVC2_MJ.Controllers
             return View(promo);
         }
 
-        // GET: Promoes/Create
+        // GET: Promo/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Promoes/Create
+        // POST: Promo/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,7 +65,7 @@ namespace TallerMVC2_MJ.Controllers
             return View(promo);
         }
 
-        // GET: Promoes/Edit/5
+        // GET: Promo/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace TallerMVC2_MJ.Controllers
                 return NotFound();
             }
 
-            var promo = await _context.Promo_1.FindAsync(id);
+            var promo = await _context.Promo.FindAsync(id);
             if (promo == null)
             {
                 return NotFound();
@@ -81,7 +81,7 @@ namespace TallerMVC2_MJ.Controllers
             return View(promo);
         }
 
-        // POST: Promoes/Edit/5
+        // POST: Promo/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -116,7 +116,7 @@ namespace TallerMVC2_MJ.Controllers
             return View(promo);
         }
 
-        // GET: Promoes/Delete/5
+        // GET: Promo/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,7 +124,7 @@ namespace TallerMVC2_MJ.Controllers
                 return NotFound();
             }
 
-            var promo = await _context.Promo_1
+            var promo = await _context.Promo
                 .FirstOrDefaultAsync(m => m.PromoId == id);
             if (promo == null)
             {
@@ -134,15 +134,15 @@ namespace TallerMVC2_MJ.Controllers
             return View(promo);
         }
 
-        // POST: Promoes/Delete/5
+        // POST: Promo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var promo = await _context.Promo_1.FindAsync(id);
+            var promo = await _context.Promo.FindAsync(id);
             if (promo != null)
             {
-                _context.Promo_1.Remove(promo);
+                _context.Promo.Remove(promo);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace TallerMVC2_MJ.Controllers
 
         private bool PromoExists(int id)
         {
-            return _context.Promo_1.Any(e => e.PromoId == id);
+            return _context.Promo.Any(e => e.PromoId == id);
         }
     }
 }

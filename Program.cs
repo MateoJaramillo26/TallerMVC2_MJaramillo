@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using TallerMVC2_MJ.Data;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TallerMVC2_MJContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TallerMVC2_MJContext") ?? throw new InvalidOperationException("Connection string 'TallerMVC2_MJContext' not found.")));
+builder.Services.AddDbContext<mjburgerpersonalizado>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("mjburgerpersonalizado") ?? throw new InvalidOperationException("Connection string 'mjburgerpersonalizado' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -27,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=MJHome}/{action=MJIndex}/{id?}");
 
 app.Run();

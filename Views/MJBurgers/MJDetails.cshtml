@@ -1,0 +1,36 @@
+﻿@model TallerMVC2_MJ.Models.MJBurger
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MJBurger</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MJName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MJName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MJWithCheese)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MJWithCheese)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MJPrecio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MJPrecio)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="MJEdit" asp-route-id="@Model?.MJBurgerId">Edit</a> |
+    <a asp-action="MJIndex">Back to List</a>
+</div>

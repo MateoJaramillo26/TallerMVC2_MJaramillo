@@ -2,11 +2,11 @@
 {
     public class MJPromo
     {
-        public int PromoId { get; set; }
-        public string? PromoDescripcion { get; set; }
-        public DateTime FechaPromocion { get; set; }
+        public int MJPromoId { get; set; }
+        public string? MJPromoDescripcion { get; set; }
+        public DateTime MJFechaPromocion { get; set; }
 
-        public int BurgerId { get; set; }
-        public MJBurger? Burger { get; set; }
+        public int MJBurgerId { get; set; }
+        public MJBurger? MJBurger { get; set; }
     }
 }

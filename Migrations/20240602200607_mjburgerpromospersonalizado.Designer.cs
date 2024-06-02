@@ -5,15 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TallerMVC2_MJ.Data;
 
 #nullable disable
 
 namespace TallerMVC2_MJ.Migrations
 {
-    [DbContext(typeof(TallerMVC2_MJContext))]
-    [Migration("20240417171837_Inicio1Bdd")]
-    partial class Inicio1Bdd
+    [DbContext(typeof(mjburgerpersonalizado))]
+    [Migration("20240602200607_mjburgerpromospersonalizado")]
+    partial class mjburgerpromospersonalizado
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,67 +24,67 @@ namespace TallerMVC2_MJ.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("TallerMVC2_MJ.Models.Burger", b =>
+            modelBuilder.Entity("TallerMVC2_MJ.Models.MJBurger", b =>
                 {
-                    b.Property<int>("BurgerId")
+                    b.Property<int>("MJBurgerId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BurgerId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MJBurgerId"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("MJName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Precio")
+                    b.Property<decimal>("MJPrecio")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<bool>("WithCheese")
+                    b.Property<bool>("MJWithCheese")
                         .HasColumnType("bit");
 
-                    b.HasKey("BurgerId");
+                    b.HasKey("MJBurgerId");
 
-                    b.ToTable("Burger");
+                    b.ToTable("MJBurger");
                 });
 
-            modelBuilder.Entity("TallerMVC2_MJ.Models.Promo", b =>
+            modelBuilder.Entity("TallerMVC2_MJ.Models.MJPromo", b =>
                 {
-                    b.Property<int>("PromoId")
+                    b.Property<int>("MJPromoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PromoId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MJPromoId"));
 
-                    b.Property<int>("BurgerId")
+                    b.Property<int>("MJBurgerId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("FechaPromocion")
+                    b.Property<DateTime>("MJFechaPromocion")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("PromoDescripcion")
+                    b.Property<string>("MJPromoDescripcion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PromoId");
+                    b.HasKey("MJPromoId");
 
-                    b.HasIndex("BurgerId");
+                    b.HasIndex("MJBurgerId");
 
-                    b.ToTable("Promo");
+                    b.ToTable("MJPromo");
                 });
 
-            modelBuilder.Entity("TallerMVC2_MJ.Models.Promo", b =>
+            modelBuilder.Entity("TallerMVC2_MJ.Models.MJPromo", b =>
                 {
-                    b.HasOne("TallerMVC2_MJ.Models.Burger", "Burger")
-                        .WithMany("Promo")
-                        .HasForeignKey("BurgerId")
+                    b.HasOne("TallerMVC2_MJ.Models.MJBurger", "MJBurger")
+                        .WithMany("MJPromo")
+                        .HasForeignKey("MJBurgerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Burger");
+                    b.Navigation("MJBurger");
                 });
 
-            modelBuilder.Entity("TallerMVC2_MJ.Models.Burger", b =>
+            modelBuilder.Entity("TallerMVC2_MJ.Models.MJBurger", b =>
                 {
-                    b.Navigation("Promo");
+                    b.Navigation("MJPromo");
                 });
 #pragma warning restore 612, 618
         }

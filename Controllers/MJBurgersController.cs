@@ -5,67 +5,66 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using TallerMVC2_MJ.Data;
 using TallerMVC2_MJ.Models;
 
 namespace TallerMVC2_MJ.Controllers
 {
     public class MJBurgersController : Controller
     {
-        private readonly TallerMVC2_MJContext _context;
+        private readonly mjburgerpersonalizado _context;
 
-        public MJBurgersController(TallerMVC2_MJContext context)
+        public MJBurgersController(mjburgerpersonalizado context)
         {
             _context = context;
         }
 
-        // GET: Burgers
+        // GET: MJBurgers
         public async Task<IActionResult> MJIndex()
         {
-            return View(await _context.Burger.ToListAsync());
+            return View(await _context.MJBurger.ToListAsync());
         }
 
-        // GET: Burgers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: MJBurgers/Details/5
+        public async Task<IActionResult> MJDetails(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var burger = await _context.Burger
-                .FirstOrDefaultAsync(m => m.BurgerId == id);
-            if (burger == null)
+            var mJBurger = await _context.MJBurger
+                .FirstOrDefaultAsync(m => m.MJBurgerId == id);
+            if (mJBurger == null)
             {
                 return NotFound();
             }
 
-            return View(burger);
+            return View(mJBurger);
         }
 
-        // GET: Burgers/Create
+        // GET: MJBurgers/Create
         public IActionResult MJCreate()
         {
             return View();
         }
 
-        // POST: Burgers/Create
+        // POST: MJBurgers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MJCreate([Bind("BurgerId,Name,WithCheese,Precio")] MJBurger burger)
+        public async Task<IActionResult> MJCreate([Bind("MJBurgerId,MJName,MJWithCheese,MJPrecio")] MJBurger mJBurger)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(burger);
+                _context.Add(mJBurger);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MJIndex));
             }
-            return View(burger);
+            return View(mJBurger);
         }
 
-        // GET: Burgers/Edit/5
+        // GET: MJBurgers/Edit/5
         public async Task<IActionResult> MJEdit(int? id)
         {
             if (id == null)
@@ -73,22 +72,22 @@ namespace TallerMVC2_MJ.Controllers
                 return NotFound();
             }
 
-            var burger = await _context.Burger.FindAsync(id);
-            if (burger == null)
+            var mJBurger = await _context.MJBurger.FindAsync(id);
+            if (mJBurger == null)
             {
                 return NotFound();
             }
-            return View(burger);
+            return View(mJBurger);
         }
 
-        // POST: Burgers/Edit/5
+        // POST: MJBurgers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> MJEdit(int id, [Bind("BurgerId,Name,WithCheese,Precio")] MJBurger burger)
+        public async Task<IActionResult> MJEdit(int id, [Bind("MJBurgerId,MJName,MJWithCheese,MJPrecio")] MJBurger mJBurger)
         {
-            if (id != burger.BurgerId)
+            if (id != mJBurger.MJBurgerId)
             {
                 return NotFound();
             }
@@ -97,12 +96,12 @@ namespace TallerMVC2_MJ.Controllers
             {
                 try
                 {
-                    _context.Update(burger);
+                    _context.Update(mJBurger);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BurgerExists(burger.BurgerId))
+                    if (!MJBurgerExists(mJBurger.MJBurgerId))
                     {
                         return NotFound();
                     }
@@ -111,12 +110,12 @@ namespace TallerMVC2_MJ.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(MJIndex));
             }
-            return View(burger);
+            return View(mJBurger);
         }
 
-        // GET: Burgers/Delete/5
+        // GET: MJBurgers/Delete/5
         public async Task<IActionResult> MJDelete(int? id)
         {
             if (id == null)
@@ -124,34 +123,34 @@ namespace TallerMVC2_MJ.Controllers
                 return NotFound();
             }
 
-            var burger = await _context.Burger
-                .FirstOrDefaultAsync(m => m.BurgerId == id);
-            if (burger == null)
+            var mJBurger = await _context.MJBurger
+                .FirstOrDefaultAsync(m => m.MJBurgerId == id);
+            if (mJBurger == null)
             {
                 return NotFound();
             }
 
-            return View(burger);
+            return View(mJBurger);
         }
 
-        // POST: Burgers/Delete/5
-        [HttpPost, ActionName("Delete")]
+        // POST: MJBurgers/Delete/5
+        [HttpPost, ActionName("MJDelete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> MJDeleteConfirmed(int id)
         {
-            var burger = await _context.Burger.FindAsync(id);
-            if (burger != null)
+            var mJBurger = await _context.MJBurger.FindAsync(id);
+            if (mJBurger != null)
             {
-                _context.Burger.Remove(burger);
+                _context.MJBurger.Remove(mJBurger);
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(MJIndex));
         }
 
-        private bool BurgerExists(int id)
+        private bool MJBurgerExists(int id)
         {
-            return _context.Burger.Any(e => e.BurgerId == id);
+            return _context.MJBurger.Any(e => e.MJBurgerId == id);
         }
     }
 }

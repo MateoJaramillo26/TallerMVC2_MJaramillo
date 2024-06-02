@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TallerMVC2_MJ.Models.MJPromo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="MJCreate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MJPromoDescripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MJFechaPromocion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MJBurger)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MJPromoDescripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MJFechaPromocion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MJBurger.MJName)
+            </td>
+            <td>
+                <a asp-action="MJEdit" asp-route-id="@item.MJPromoId">MJEdit</a> |
+                <a asp-action="MJDetails" asp-route-id="@item.MJPromoId">MJDetails</a> |
+                <a asp-action="MJDelete" asp-route-id="@item.MJPromoId">MJDelete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

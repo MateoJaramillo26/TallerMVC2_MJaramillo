@@ -4,21 +4,21 @@ using TallerMVC2_MJ.Models;
 
 namespace TallerMVC2_MJ.Controllers
 {
-    public class HomeController : Controller
+    public class MJHomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<MJHomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public MJHomeController(ILogger<MJHomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult MJIndex()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult MJPrivacy()
         {
             return View();
         }
@@ -26,7 +26,7 @@ namespace TallerMVC2_MJ.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new MJErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

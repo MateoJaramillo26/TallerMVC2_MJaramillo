@@ -1,13 +1,13 @@
-﻿@model IEnumerable<TallerMVC2_MJ.Models.Burger>
+﻿@model IEnumerable<TallerMVC2_MJ.Models.MJBurger>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Crea una hamburguesa</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">MJCreate New</a>
 </p>
 <table class="table">
     <thead>
@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.BurgerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.BurgerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.BurgerId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.BurgerId">MJEdit</a> |
+                <a asp-action="Details" asp-route-id="@item.BurgerId">MJDetails</a> |
+                <a asp-action="Delete" asp-route-id="@item.BurgerId">MJDelete</a>
             </td>
         </tr>
 }

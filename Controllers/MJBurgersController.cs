@@ -10,17 +10,17 @@ using TallerMVC2_MJ.Models;
 
 namespace TallerMVC2_MJ.Controllers
 {
-    public class BurgersController : Controller
+    public class MJBurgersController : Controller
     {
         private readonly TallerMVC2_MJContext _context;
 
-        public BurgersController(TallerMVC2_MJContext context)
+        public MJBurgersController(TallerMVC2_MJContext context)
         {
             _context = context;
         }
 
         // GET: Burgers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> MJIndex()
         {
             return View(await _context.Burger.ToListAsync());
         }
@@ -44,7 +44,7 @@ namespace TallerMVC2_MJ.Controllers
         }
 
         // GET: Burgers/Create
-        public IActionResult Create()
+        public IActionResult MJCreate()
         {
             return View();
         }
@@ -54,7 +54,7 @@ namespace TallerMVC2_MJ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BurgerId,Name,WithCheese,Precio")] Burger burger)
+        public async Task<IActionResult> MJCreate([Bind("BurgerId,Name,WithCheese,Precio")] MJBurger burger)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace TallerMVC2_MJ.Controllers
         }
 
         // GET: Burgers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> MJEdit(int? id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace TallerMVC2_MJ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BurgerId,Name,WithCheese,Precio")] Burger burger)
+        public async Task<IActionResult> MJEdit(int id, [Bind("BurgerId,Name,WithCheese,Precio")] MJBurger burger)
         {
             if (id != burger.BurgerId)
             {
@@ -117,7 +117,7 @@ namespace TallerMVC2_MJ.Controllers
         }
 
         // GET: Burgers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> MJDelete(int? id)
         {
             if (id == null)
             {

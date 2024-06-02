@@ -1,6 +1,6 @@
 namespace TallerMVC2_MJ.Models
 {
-    public class ErrorViewModel
+    public class MJErrorViewModel
     {
         public string? RequestId { get; set; }
 

@@ -10,11 +10,11 @@ using TallerMVC2_MJ.Models;
 
 namespace TallerMVC2_MJ.Controllers
 {
-    public class PromoController : Controller
+    public class MJPromoController : Controller
     {
         private readonly TallerMVC2_MJContext _context;
 
-        public PromoController(TallerMVC2_MJContext context)
+        public MJPromoController(TallerMVC2_MJContext context)
         {
             _context = context;
         }
@@ -57,7 +57,7 @@ namespace TallerMVC2_MJ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PromoId,PromoDescripcion,FechaPromocion,BurgerId")] Promo promo)
+        public async Task<IActionResult> Create([Bind("PromoId,PromoDescripcion,FechaPromocion,BurgerId")] MJPromo promo)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace TallerMVC2_MJ.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PromoId,PromoDescripcion,FechaPromocion,BurgerId")] Promo promo)
+        public async Task<IActionResult> Edit(int id, [Bind("PromoId,PromoDescripcion,FechaPromocion,BurgerId")] MJPromo promo)
         {
             if (id != promo.PromoId)
             {

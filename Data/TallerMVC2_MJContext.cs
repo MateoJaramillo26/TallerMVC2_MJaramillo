@@ -14,7 +14,7 @@ namespace TallerMVC2_MJ.Data
         {
         }
 
-        public DbSet<TallerMVC2_MJ.Models.Burger> Burger { get; set; } = default!;
-        public DbSet<TallerMVC2_MJ.Models.Promo> Promo { get; set; } = default!;
+        public DbSet<TallerMVC2_MJ.Models.MJBurger> Burger { get; set; } = default!;
+        public DbSet<TallerMVC2_MJ.Models.MJPromo> Promo { get; set; } = default!;
     }
 }
